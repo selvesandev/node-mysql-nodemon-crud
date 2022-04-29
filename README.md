@@ -32,3 +32,18 @@
 ### Start app using Nodemon
 
     $ npm run dev
+
+
+
+
+### Table
+
+```sql
+create table blogs(
+ id  bigint unsigned AUTO_INCREMENT primary key,
+ title varchar(255),
+ content TEXT,
+ created_at timestamp default now(),
+ updated_at timestamp default now()
+);
+```

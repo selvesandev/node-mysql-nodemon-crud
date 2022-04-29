@@ -5,14 +5,18 @@ const {
   readUser,
   updateUser,
   deleteUser,
+  readSingleUser,
 } = require("../controllers/user");
 
 router.post("/user", createUser);
 
 router.get("/user", readUser);
 
+router.get("/user/:userId", readSingleUser);
+
 router.put("/user/:userId", updateUser);
 
 router.delete("/user/:userId", deleteUser);
+
 
 module.exports = router;

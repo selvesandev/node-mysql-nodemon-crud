@@ -42,7 +42,7 @@ app.use(cors());
 app.use("/api", userRoutes);
 
 // PORT
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 // Starting a server
 app.listen(port, () => {

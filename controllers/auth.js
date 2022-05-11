@@ -19,7 +19,7 @@ exports.userLogin = async (req, res) => {
       token: jwt.sign({
         id: user.id,
         email: user.email,
-      })
+      },'salt_secret', { expiresIn: '1h' })
     });
 
   });

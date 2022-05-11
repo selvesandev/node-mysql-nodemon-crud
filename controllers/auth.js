@@ -1,12 +1,26 @@
 const User = require("../models/user");
+var jwt = require('jsonwebtoken');
 
 exports.userLogin = async (req, res) => {
-  // username check 
-  // password check
-  // if login success return token
-  // if login failed return exception.
-  
-  return res.json({
-    msg: 'Login successfully..'
+
+  const { username, password } = req.body;
+
+  User.readSingle(username, function (err, user) {
+    if (err) {
+      return res.status(403).send(err);
+    }
+
+    if (!user) return res.sstatus(403).send({ msg: 'User not found' });
+
+    if (user.password !== password) return res.status(403).send({ msg: 'Password is incorrect' });
+
+    res.json({
+      msg: 'Logged in',
+      token: jwt.sign({
+        id: user.id,
+        email: user.email,
+      })
+    });
+
   });
 };

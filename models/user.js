@@ -41,6 +41,16 @@ User.readSingle = function (id, result) {
   });
 };
 
+User.readSingleByEmail = function (email, result) {
+  connection.query("SELECT * FROM users where email = ?", [email], (err, res) => {
+    if (err) {
+      result(err, null);
+    } else {
+      result(null, res.length ? res[0] : null);
+    }
+  });
+};
+
 User.update = function (id, user, result) {
   connection.query("UPDATE users SET ? WHERE id = ?", [user, id], function (
     err,

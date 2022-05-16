@@ -11,7 +11,7 @@ exports.userLogin = async (req, res) => {
       return res.status(403).send(err);
     }
 
-    if (!user) return res.sstatus(403).send({ msg: 'User not found' });
+    if (!user) return res.status(403).send({ msg: 'User not found' });
 
     if (user.auth_password !== password) return res.status(403).send({ msg: 'Password is incorrect' });
 
